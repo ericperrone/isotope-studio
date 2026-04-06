@@ -1,0 +1,13 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Enter the coordinates of the point to be plotted</h4>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-6">X: <input type="number" class="form-control" [(ngModel)]="xPoint"></div>
+        <div class="col-6">Y: <input type="number" class="form-control" [(ngModel)]="yPoint"></div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="close()">Cancel</button>
+    <button type="button" class="btn btn-outline-dark" (click)="plot()">Plot</button>
+</div>

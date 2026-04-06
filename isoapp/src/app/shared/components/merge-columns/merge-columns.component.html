@@ -1,0 +1,29 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Merge grid columns</h4>
+</div>
+<div class="modal-body">
+    <div class="scrollable" style="height: 35em;">
+        <table class="centered">
+            <tr *ngFor="let r of tabella">
+                <ng-template ngFor let-c [ngForOf]="r">
+                    <td *ngIf="c.visible == true" [style]="c.header === true ? 'background-color: lightblue; cursor: pointer !important' : 'background-color: white'" (click)="onClick(c)">{{
+                        c.content }}</td>
+                </ng-template>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="modal-footer">
+    <!-- <div class="row">
+        <div class="col-6">{{ message }}</div>
+        <div class="col-6">
+            <button type="button" class="btn btn-outline-dark" (click)="cancel()">Cancel</button>
+            <button type="button" class="btn btn-outline-dark" (click)="confirm()"
+                [disabled]="!mergeable">Confirm</button>
+        </div>
+    </div> -->
+    <ngb-alert [type]="'danger'" *ngIf="false == mergeable" style="margin-left: 3px !important; margin-right: auto !important; width: 50% !important">{{ message }}</ngb-alert>
+    <ngb-alert [type]="'success'" *ngIf="true == mergeable" style="margin-left: 3px !important; margin-right: auto !important; width: 60% !important">{{ message }}</ngb-alert>
+    <button type="button" class="btn btn-outline-dark" (click)="cancel()">Cancel</button>
+    <button type="button" class="btn btn-outline-dark" (click)="confirm()" [disabled]="!mergeable && step < 2">Confirm</button>
+</div>

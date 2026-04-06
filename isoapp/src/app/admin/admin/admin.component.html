@@ -1,0 +1,51 @@
+<app-header>[initialStatus]="'transitionLeft'"></app-header>
+<div class="application-page">
+    <div class="w80 centered">
+        <ngb-alert type="custom" [dismissible]="false">Generate a new access key for a partner</ngb-alert>
+        <div *ngIf="!!logged" class="centered list-container">
+            <div class="row centered text-center">
+                <div class="col-12 centered text-center">
+                    <label>Enter the name of the partner</label>
+                    <input type="text" class="form-control centered w50" [(ngModel)]="partner">
+                </div>
+                <div class="row centered text-center">
+                    <div class="col-12 centered" style="margin-top: 1.5em !important">
+                        <button type="button" class="btn btn-outline-dark" (click)="generateAccessKey()" [disabled]="partner.length <= 0"><i
+                                class="fa-solid fa-key"></i> Generate Access
+                            Key</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 1.5em !important">
+                <div class="col-12 centered text-center">
+                    <span class="access-key" *ngIf="accessKey.length > 0">{{ accessKey }}</span>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top: 1em;"></div>
+        <ngb-alert type="custom" [dismissible]="false" style="margin-top: 1em">Administrator management page</ngb-alert>
+        <div *ngIf="!!logged" class="centered list-container">
+            <div class="text-right mt-1 mb-1">
+                <button type="button" class="btn btn-outline-dark" (click)="addAdministrator()"><i
+                        class="fa-solid fa-plus"></i> Add administrator</button>
+            </div>
+            <ul class="list-group list-group-light">
+                <li *ngFor="let a of admins"
+                    class="list-group-item px-3 border-0 rounded-3 list-group-item-secondary mb-2">
+                    <div class="float-left">
+                        <span *ngIf="!!a.active">{{ a.account }}</span>
+                        <span *ngIf="!a.active" style="color: red;">{{ a.account }}</span>
+                    </div>
+                    <div class="float-right" *ngIf="!!a.active"><button class="btn" (click)="disable(a)"><i
+                                class="fa-solid fa-xmark"></i></button></div>
+                    <div class="float-right" *ngIf="!a.active"><button class="btn" (click)="enable(a)"><i
+                                class="fa-solid fa-check"></i></button></div>
+                    <div class="float-right"><button class="btn" (click)="changePassword(a)" [disabled]="!a.active"><i
+                                class="fa-solid fa-key"></i></button></div>
+                    <div class="float-right"><button class="btn" (click)="showInfo(a)"><i
+                                class="fa-solid fa-circle-info"></i></button></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

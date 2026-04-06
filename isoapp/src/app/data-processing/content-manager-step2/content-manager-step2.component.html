@@ -1,0 +1,44 @@
+<app-header>[initialStatus]="'transitionLeft'"></app-header>
+<div class="application-page" @fade>
+    <div class="w95 centered data-gathering-header">
+        <div class="step">Data table end</div>
+        <div class="data-gathering-nav">
+            <span class="far fa-arrow-alt-circle-left" (click)="goPrevious()"></span>&nbsp;
+            <span class="far fa-arrow-alt-circle-right" (click)="goNext()"
+                [style.color]="selectedRow.length < 2 ? 'lightgray' : 'black'"></span>
+        </div>
+    </div>
+
+    <div *ngIf="spinnerOn === true" class="spinner-div">
+        <div class="d-flex align-items-center w50 bordered-rounded centered">
+            <strong>Loading...</strong>
+            <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+        </div>
+    </div>
+    <div class="centered w95">
+        <p>Select the last row containing the data (the end of tha data table). If the last data row is not selected the
+            entire table will be used.</p>
+    </div>
+    <div class="centered p-1 w95 text-right">
+        <button type="button" class="btn btn-secondary navigation-button" (click)="first()"><span
+                class="fas fa-backward"></span> First</button> &nbsp;
+        <button type="button" class="btn btn-secondary navigation-button" (click)="previous()"><span
+                class="fas fa-angle-left"></span> Previous</button> &nbsp;
+        <button type="button" class="btn btn-secondary navigation-button" (click)="next()"><span
+                class="fas fa-angle-right"></span> Next</button> &nbsp;
+        <button type="button" class="btn btn-secondary navigation-button" (click)="last()"><span
+                class="fas fa-forward"></span> Last</button>
+    </div>
+    <div class="centered w95 h70 overflow-auto">
+        <table *ngIf="showContent === true" style="font-size: 0.5em;">
+            <tr *ngFor="let row of pages[pageIndex]" (click)="selectRow(row)"
+                [class.header-selected] = "checkHeaderSelected(row)"
+                [class.data-selected] = "checkSelected(row)">
+                <td *ngFor="let cell of row" class="clickable">
+                    {{ cell }}
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</div>

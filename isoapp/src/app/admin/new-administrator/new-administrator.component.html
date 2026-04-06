@@ -1,0 +1,17 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">New administrator</h4>
+</div>
+<div class="modal-body">
+    <div class="centered password">
+        <input type="text" class="form-control mt-2" placeholder="Account" [(ngModel)]="account">
+        <input type="email" class="form-control mt-2" placeholder="Email" [(ngModel)]="email">
+        <input type="password" class="form-control mt-2" placeholder="Password" [(ngModel)]="password1">
+        <input type="password" class="form-control mt-2" placeholder="Retype new password" [(ngModel)]="password2">
+        <ngb-alert type="custom" [dismissible]="false" *ngIf="!!error">{{ message }}</ngb-alert>
+        <br>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="cancel()">Cancel</button>
+        <button type="button" class="btn btn-outline-dark" (click)="confirm()">Confirm</button>
+    </div>
+</div>

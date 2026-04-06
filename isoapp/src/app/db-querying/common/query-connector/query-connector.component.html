@@ -1,0 +1,6 @@
+<div style="display: inline-block; padding-right: 0.5rem;">
+    <select class="form-select" [(ngModel)]="connector" (ngModelChange)="queryConnector.emit(connector)">
+        <option value="{{ _AND }}">{{ _AND }}</option>
+        <option value="{{ _OR }}">{{ _OR }}</option>
+    </select>
+</div>

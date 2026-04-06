@@ -1,0 +1,42 @@
+.content-container {
+    width: 95%;    
+}
+
+.data-selected {
+    background-color: violet;
+    color: white;
+}
+
+.header-selected {
+    background-color: orange;
+    color: white;
+}
+
+.table-selected {
+    background-color: beige;
+}
+
+.navigation-button {
+    width: 8em;
+    font-size: x-small;
+}
+
+.h80 {
+    height: 80%;
+}
+
+.h70 {
+    height: 70%;
+}
+
+tr {
+    border-right: 1px solid;
+    border-top: 1px solid;
+}
+
+td {
+    max-width: 100%;
+    white-space: nowrap;
+    border-left: 1px solid;
+    border-bottom: 1px solid;
+}

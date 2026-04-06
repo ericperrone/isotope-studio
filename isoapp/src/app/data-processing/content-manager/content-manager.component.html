@@ -1,0 +1,50 @@
+<app-header>[initialStatus]="'transitionLeft'"></app-header>
+<div class="application-page" @fade>
+    <div class="w95 centered data-gathering-header">
+        <div class="step">Data table start</div>
+        <div class="data-gathering-nav">
+            <span class="far fa-arrow-alt-circle-left data-gathering-arrows" (click)="goPrevious()"></span>&nbsp;
+            <span class="far fa-arrow-alt-circle-right data-gathering-arrows" (click)="goNext()"
+                [style.color]="headerRow.length < 2 && endTableRow.length < 2 ? 'lightgray' : 'black'"></span>
+        </div>
+    </div>
+
+    <div *ngIf="spinnerOn === true" class="spinner-div">
+        <div class="d-flex align-items-center w50 bordered-rounded centered">
+            <strong>Loading...</strong>
+            <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+        </div>
+    </div>
+    <div class="centered w95">
+        <p>Please verify that the <span class="header-selected">start</span> (the header) and <span class="end-selected">end</span> (the last row) of the data table has been set properly.<br>
+            If not, left-click on header row and select it, then repeat the selection on the end of the data table. Use the buttons to explore the dataset content.
+            <span *ngIf="separatorFlag === true">
+                If the data are not properly visualized try to change the record separator character using the button.
+            </span>
+        </p>
+    </div>
+    <div class="centered p-1 w95 text-right">
+        <button type="button" class="btn btn-primary merge-button" style="float: left !important" *ngIf="mergeFlag === true" (click)="mergeTables()">Merge tables</button>
+        <button type="button" class="btn btn-primary separator-button" style="float: left !important" *ngIf="separatorFlag === true" (click)="changeSeparator()">Change record separator</button>
+        <button type="button" class="btn btn-secondary navigation-button" (click)="first()"><span
+                class="fas fa-backward"></span> First</button> &nbsp;
+        <button type="button" class="btn btn-secondary navigation-button" (click)="previous()"><span
+                class="fas fa-angle-left"></span> Previous</button> &nbsp;
+        <button type="button" class="btn btn-secondary navigation-button" (click)="next()"><span
+                class="fas fa-angle-right"></span> Next</button> &nbsp;
+        <button type="button" class="btn btn-secondary navigation-button" (click)="last()"><span
+                class="fas fa-forward"></span> Last</button>
+    </div>
+    <div class="centered w95 h60 overflow-auto">
+        <table *ngIf="showContent === true" style="font-size: 0.5em;">
+            <tr *ngFor="let row of pages[pageIndex]" (click)="selectRow(row)"
+            [class.header-selected] = "checkHeaderSelected(row)"
+            [class.end-selected] = "checkEndTableSelected(row)">
+                <td *ngFor="let cell of row" class="clickable">
+                    {{ cell }}
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</div>

@@ -1,0 +1,16 @@
+.bottom-border {
+    border-bottom: solid 1px lightgray;
+}
+
+.lists {
+    min-height: 8em; 
+    max-height: 8em; 
+    border: solid 1px gray
+}
+
+th {
+    position: sticky;
+    top: 0; 
+    z-index: 1;   
+    background-color: gainsboro;
+}

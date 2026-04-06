@@ -1,0 +1,19 @@
+<div class="modal-header" *ngIf="!!params && !!params.headerText">
+    <h4 class="modal-title" id="modal-basic-title">{{ (!!params && !!params.headerText) ? params.headerText : '' }}</h4>
+</div>
+<div class="modal-body" *ngIf="!!params && !!params.choices">
+    <div>
+        {{ (!!params && !!params.bodyText) ? params.bodyText : '' }}
+    </div>
+    <div>
+        <ul class="nav flex-column">
+            <li class="nav-item" *ngFor="let c of params.choices">
+                <a class="nav-link active" [style]="setStyle(c)" (click)="emit(c.value)">
+                    <i *ngIf="!!c.icon" class="{{ c.icon }}">&nbsp;
+                    </i>
+                    {{ c.text }}
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

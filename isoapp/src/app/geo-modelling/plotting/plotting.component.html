@@ -1,0 +1,28 @@
+<div class="application-frame centered h-90" style="background-color: white; margin-top: 5em !important">
+    <div class="row header pt-1 pb-1">
+        <div class="col-1">&nbsp;</div>
+        <div class="col-9 text-left">
+            Width:
+            <input type="number" class="form-control" [(ngModel)]="chartWidth" (ngModelChange)="changeSize = true"
+                style="max-width: 5em; display: inline-block;">
+            Height:
+            <input type="number" class="form-control" [(ngModel)]="chartHeight" (ngModelChange)="changeSize = true"
+                style="max-width: 5em; display: inline-block;">
+            &nbsp;
+            <button class="btn btn-outline-dark" type="button" (click)="chartSizeChange()" [disabled]="!changeSize"><i
+                    class="fa-solid fa-expand"></i></button>&nbsp;
+            <input type="checkbox" [(ngModel)]="fixedRatio" (ngModelChange)="chartSizeChange()">Fixed ratio (4:3)
+        </div>
+        <div class="col-2 text-right">
+            <button style="margin-right: 3px;" class="btn btn-outline-dark" type="button" (click)="donwloadCsv()"><i
+                    class="fa-solid fa-download"></i></button>
+            <button class="btn btn-outline-dark" type="button" (click)="ref ? ref.close() : undefined">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+    </div>
+    <div class="centered" *ngIf="draw">
+        <canvasjs-chart class="m-1 mb-1" [options]="chartOptions" class="centered"
+            (chartInstance)="getChartInstance($event)"></canvasjs-chart>
+    </div>
+</div>

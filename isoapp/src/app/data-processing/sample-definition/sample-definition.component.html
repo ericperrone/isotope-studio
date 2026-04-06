@@ -1,0 +1,67 @@
+<app-header>[initialStatus]="'transitionLeft'"></app-header>
+<div class="application-page" @fade>
+    <div class="w95 centered data-gathering-header">
+        <div class="step">Sample definition</div>
+        <div class="data-gathering-nav">
+            <span class="far fa-arrow-alt-circle-left data-gathering-arrows" (click)="goPrevious()"></span>&nbsp;
+            <span class="far fa-arrow-alt-circle-right data-gathering-arrows" (click)="goNext()"
+                [style.color]="dataComposed === false ? 'lightgray' : 'black'"></span>
+        </div>
+    </div>
+    <div class="centered w95">
+        <p>
+            Select the fields defining the sample. Select also the chemical elements/isotopes if available. Select
+            'None' if you don't want to import some field in the database.<br>
+            When done, proceed to upload data.
+        </p>
+    </div>
+    <div class="centered w95 h50 scrollable" *ngIf="sampleDef.length > 0 && ums.length > 0">
+        <table cellspacing="1" class="centered">
+            <tr *ngFor="let s of sampleDef">
+                <td width="20%" *ngIf="template === false"><span #fields class="rounded"
+                        [style.background-color]="styles[s.item]">{{ s.item }}</span></td>
+                <td width="30%" style="text-align: center;" *ngIf="template === false">
+                    <div *ngIf="s.type === ST.CHEM">
+                        <label style="display: inline; margin-right: 0.5em;">Unit</label>
+                        <select style="max-width: 7em !important; display: inline;" class="form-select"
+                            [(ngModel)]="s.um">
+                            <option *ngFor="let um of ums" [value]="um">{{ um }}</option>
+                        </select>
+                    </div>
+                    <div *ngIf="s.type === ST.ISOTOPE" class="row">
+                        <div class="col-sm-12 col-md-8">
+                            <!-- <label style="display: inline; margin-right: 0.5em;">Error</label>
+                            <input type="number" class="form-control" [(ngModel)]="s.error" style="max-width: 10em !important; display: inline;"> -->
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <!-- <label style="display: inline; margin-right: 0.5em;">Type</label> -->
+                            <!-- <select style="max-width: 5.5em !important;" class="form-select"
+                                [(ngModel)]="s.utype">
+                                <option *ngFor="let ut of uTypes" [value]="ut">{{ ut }}</option>
+                            </select> -->
+                        </div>
+                    </div>
+                </td>
+                <td width="50%" *ngIf="template === true"><span #fields class="rounded"
+                        [style.background-color]="styles[s.item]">{{ s.item }}</span></td>
+                <!-- <td width="10%" style="text-align: left;">
+                    <input type="checkbox" *ngIf="s.type === ST.CHEM" class="form-check-input"> <span *ngIf="s.type === ST.CHEM">Apply to all</span>
+                </td> -->
+                <td width="50%">
+                    <input #samplefield name="{{ s.item }}" class="form-check-input" type="radio" value="1"
+                        (click)="setStyle(s, ST.FIELD)" [checked]="s.type === ST.FIELD"><span class="field"> Sample
+                        field</span>&nbsp;
+                    <input #chemelement name="{{ s.item }}" class="form-check-input" type="radio" value="2"
+                        (click)="setStyle(s, ST.CHEM)" [checked]="s.type === ST.CHEM"><span class="chem"> Chem.
+                        element</span>&nbsp;
+                    <input #isotope name="{{ s.item }}" class="form-check-input" type="radio" value="3"
+                        (click)="setStyle(s, ST.ISOTOPE)" [checked]="s.type === ST.ISOTOPE"><span class="isotope">
+                        Isotope</span>&nbsp;
+                    <input #none name="{{ s.item }}" class="form-check-input" type="radio" value="4"
+                        (click)="setStyle(s, ST.NONE)" [checked]="s.type === ST.NONE"> None
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</div>

@@ -1,0 +1,23 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Define your own normalization data.</h4>
+</div>
+<div class="modal-body">
+    <div style="margin-bottom: 1.5em; margin-top: 1.5em;">
+        Label: <input type="text" [(ngModel)]="normName" class="form-control" style="width: 70% !important; display: inline;" (ngModelChange)="onModelChange()"> 
+        <!-- <button class="btn btn-outline-dark ms-5" (click)="saveInSession()" [disabled]="disabled"><i class="fa-solid fa-right-to-bracket"></i></button> -->
+    </div>
+    <div class="scrollable" style="max-height: 20em; width: 100%;">
+        <div class="row" style="width: 95% !important" *ngFor="let item of normItemList">
+            <div class="col-md-4 col-sm-12 text-center">
+                <span class="item-element">{{ item.element }}</span>
+            </div>
+            <div class="col-md-8 col-sm-12">
+                Value: <input type="number" class="form-control" [(ngModel)]="item.value" style="width: 50% !important; display: inline;" (ngModelChange)="onModelChange()">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="cancel()">Cancel</button>
+    <button type="button" class="btn btn-outline-dark" (click)="confirm()" [disabled]="disabled">Confirm</button>
+</div>

@@ -1,0 +1,50 @@
+table {
+    width: 90%;
+}
+
+tr {
+    border-bottom: solid 1px lightgray;
+}
+
+td {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+.rounded {
+    border: solid 1px lightgray;
+    border-radius: 5px;
+    padding: 3px;
+}
+
+.scrollable {
+    overflow-y: auto;
+}
+
+.field {
+    // color: #cfe2ff
+    color: lightseagreen;
+}
+
+.chem {
+    // color: #a3cfbb
+    color: lightsalmon;
+}
+
+.isotope {
+    color: lightgreen;
+}
+
+.cell {
+    width: 5em;
+    max-width: 5em;
+    padding-right: 1em;
+}
+
+.form-check-input[type=radio] {
+    border-color: gray !important;
+}
+
+.form-check-input:checked {
+    background-color: gray;
+}

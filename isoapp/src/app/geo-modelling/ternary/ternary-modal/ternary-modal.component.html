@@ -1,0 +1,34 @@
+<div class="modal-header">
+    <h4>Ternary diagram options</h4>
+</div>
+<div class="modal-body">
+    <input type="checkbox" [(ngModel)]="ternaryData.cache" class="form-check-input"> Cache data to plot more than one series on the same chart.
+    <div class="text-italic mt-1">Cached data will be lost when you change one or more of the vertex A, B, C.</div>
+    <div class="row mt-1">
+        <div class="col-md-6 col-sm-12">
+            Give a name to this series
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <input class="form-control" type="text" [(ngModel)]="ternaryData.name">
+        </div>
+    </div>
+    <div class="row mt-1">
+        <div class="col-md-6 col-sm-12">Give a color to this series</div>
+        <div class="col-md-6 col-sm-12 text-right">
+            <input class="table-input-color" type="color" [(ngModel)]="ternaryData.color">
+        </div>
+    </div>
+    <div class="row mt-1">
+        <div class="col-md-6 col-sm-12">Give a shape to this series</div>
+        <div class="col-md-6 col-sm-12">
+            <select class="form-select" [(ngModel)]="ternaryData.shape">
+                <option *ngFor="let shape of ChartShapes">{{
+                    shape }}</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="modal-footer text-right">
+    <button type="button" class="btn btn-secondary" (click)="close()">Close</button>
+    <button type="button" class="btn btn-primary" (click)="set()">Set</button>
+</div>

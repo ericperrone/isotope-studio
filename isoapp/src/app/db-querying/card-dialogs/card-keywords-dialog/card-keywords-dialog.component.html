@@ -1,0 +1,15 @@
+<div class="modal-header">
+    <h5 class="modal-title" id="modal-basic-title">Filter keywords</h5>
+</div>
+<div class="modal-body">
+    <div class="form-group">
+        <label for="kwords">Keywords</label>
+        <input type="text" class="form-control" id="kwords" placeholder="Enter reference" aria-describedby="refhelp"
+            [(ngModel)]="keywords">
+        <small id="kwordshelp" class="form-text text-muted">Enter any keyword useful to identify the document (i.e. the title or a part of the title)</small>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="cancel()">Cancel</button>
+    <button type="button" class="btn btn-outline-dark" (click)="confirm()" [disabled]="keywords.length <= 0">Confirm</button>   
+</div>

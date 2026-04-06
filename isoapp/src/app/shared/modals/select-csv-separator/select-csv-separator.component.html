@@ -1,0 +1,20 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Change record separator</h4>
+</div>
+<div class="modal-body">
+    <div>
+       Select the proper character used as record separator for this dataset file.
+    </div>
+    <div>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link active clickable" (click)="emit(',')"> Comma </a>
+                <a class="nav-link active clickable" (click)="emit(';')"> Semicolon </a>
+                <a class="nav-link active clickable" (click)="emit('tab')"> Tab key </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="close()">Close</button>
+</div>

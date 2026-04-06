@@ -1,0 +1,67 @@
+<div class="formlab-header">
+    <!-- <i class="bi-alarm" style="font-size: 2rem; color: rgb(255, 255, 255);"></i> -->
+    <!-- <i class="bi bi-list" color="white"></i>     -->
+    <div style="display:inline-block" class="clickable" (click)="toggleSidebar()">
+        &nbsp;&nbsp;<i class="fa-solid fa-bars"></i>
+    </div>
+
+    <div style="display:inline-block; margin-left: 1em;">
+        ISOTOPE Studio
+    </div>
+
+    <div style="display:inline-block; margin-left: 10em; width: 12em;" class="margin-logo">
+        <img src="assets/eung.png" style="height: 3em; width: auto;">
+    </div>
+
+    <div style="display:inline-block; margin-left: 1.5em; width: 12em;" class="margin-logo">
+        <img src="assets/mur.png" style="height: 2.8em; width: auto;">
+    </div>
+
+    <div style="display:inline-block; margin-left: 1.5em; width: 12em;" class="margin-logo">
+        <img src="assets/italiadomani.png" style="height: 4.5em; width: auto;">
+    </div>
+
+    <div style="display:inline-block; margin-left: 4.5em;">
+        <img src="assets/logo.png" style="height: 3em; width: auto;">
+    </div>
+
+    <div style="float: right; margin-right: 10px; cursor: pointer;" id="user-menu">        
+        <i class="fa-solid fa-user" *ngIf="!!storeService.getCurrentUser()" (click)="logout()"></i> {{ !!storeService.getCurrentUser() ? storeService.getCurrentUser().username : '' }}
+        <button *ngIf="!!storeService.getCurrentUser()" type="button" class="btn btn-outline-light" (click)="logout()"> logout</button> 
+    </div>
+ 
+    <!-- <div class="float-right header-logo mr2"><img src="assets/logo.png" height="70%"></div> -->
+    <div class="sidebar-off background-light-dark" *ngIf="transition === 'sideOff'">
+        <p></p>
+        <p class="clickable sidebar-item" (click)="gotoDbQueries()">Database querying</p>
+        <p class="clickable sidebar-item" (click)="gotoDataProcessing()">Data import</p>
+        <p class="clickable sidebar-item" (click)="gotoLogin()">Administrator</p>
+        <p class="clickable sidebar-item" (click)="gotoHome()">Home</p>
+        <!-- <p class="clickable sidebar-item" (click)="gotoTest()">Test</p> -->
+    </div>
+    <div class="sidebar-on background-light-dark" *ngIf="transition === 'sideOn'">
+        <p></p>
+        <p class="clickable sidebar-item" (click)="gotoDbQueries()">Database querying</p>
+        <p class="clickable sidebar-item" (click)="gotoDataProcessing()">Data import</p>
+        <p class="clickable sidebar-item" (click)="gotoLogin()">Administrator</p>
+        <p class="clickable sidebar-item" (click)="gotoHome()">Home</p>
+        <!-- <p class="clickable sidebar-item" (click)="gotoTest()">Test</p> -->
+    </div>
+    <div class="sidebar-left background-light-dark" *ngIf="transition === 'transitionLeft'">
+        <p></p>
+        <p class="clickable sidebar-item" (click)="gotoDbQueries()">Database querying</p>
+        <p class="clickable sidebar-item" (click)="gotoDataProcessing()">Data import</p>
+        <p class="clickable sidebar-item" (click)="gotoLogin()">Administrator</p>
+        <p class="clickable sidebar-item" (click)="gotoHome()">Home</p>
+        <!-- <p class="clickable sidebar-item" (click)="gotoTest()">Test</p> -->
+    </div>
+    <div class="sidebar-right background-light-dark" *ngIf="transition === 'transitionRight'">
+        <p></p>
+        <p class="clickable sidebar-item" (click)="gotoDbQueries()">Database querying</p>
+        <p class="clickable sidebar-item" (click)="gotoDataProcessing()">Data import</p>
+        <p class="clickable sidebar-item" (click)="gotoLogin()">Administrator</p>
+        <p class="clickable sidebar-item" (click)="gotoHome()">Home</p>
+        <!-- <p class="clickable sidebar-item" (click)="gotoTest()">Test</p> -->
+    </div>
+
+</div>

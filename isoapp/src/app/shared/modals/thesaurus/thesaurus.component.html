@@ -1,0 +1,33 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{ params.thesaurus.key }}</h4>
+</div>
+<div class="modal-body" *ngIf="true === ready">
+    <table class="table table-striped">
+        <thead>
+            <th *ngFor="let k of keys">{{ k }}</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let r of tableContent; index as i" class="clickable" (click)="onClick(r, i)">
+                <ng-template ngFor let-k [ngForOf]="keys">
+                    <td [style]="i === selectedRow ? 'background: orange' : 'background: white'">{{ r[k] }}</td>
+                    <!-- <td></td> -->
+                </ng-template>
+            </tr>
+        </tbody>
+    </table>
+    <div class="d-flex justify-content-between p-2" style="max-width: 10em;">
+        <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" [maxSize]="5"
+            (pageChange)="refreshTable()">
+        </ngb-pagination>
+    </div>
+    <div>
+        <select class="form-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshTable()">
+            <option [ngValue]="10">10 items per page</option>
+            <option [ngValue]="20">20 items per page</option>
+        </select>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="close()">Close</button>
+    <button type="button" class="btn btn-outline-dark" (click)="select()" [disabled]="selectedRow < 0">Select</button>
+</div>

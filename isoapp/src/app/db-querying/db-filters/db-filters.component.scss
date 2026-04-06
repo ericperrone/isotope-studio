@@ -1,0 +1,18 @@
+thead {
+    background-color: gainsboro;
+}
+
+td, th {
+    white-space: nowrap;
+    border-right: solid 1px lightgray;
+    padding-left: 5px;
+    padding-right: 5px;
+    // border-bottom: solid 1px lightgray;;
+}
+
+.cache-alert {
+    margin: 0 !important;
+    width: 3em;
+    padding: 0.1em !important;
+    text-align: center;
+}

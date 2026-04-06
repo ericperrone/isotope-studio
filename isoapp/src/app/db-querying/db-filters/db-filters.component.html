@@ -1,0 +1,61 @@
+<div class="application-page vscrollable" [hidden]="filterOn === false">
+    <div class="w95 centered data-gathering-header row mb-1">
+      <div class="col-8">Enter search criteria, then press 'Submit' button</div>
+      <div class="col-4">
+        <button class="btn btn-primary m-1 float-right" [disabled]="queryDisabled" (click)="submitQuery()">Submit</button>
+        <button class="btn btn-secondary m-1 float-right" (click)="resetFilters()">Reset filters</button>
+      </div>
+    </div>
+    <div class="w95 centered">
+      <div *ngIf="spinnerOn === true" class="spinner-div">
+        <div class="d-flex align-items-center w50 bordered-rounded centered">
+          Wait until the operation is completed.
+          <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+        </div>
+      </div>
+  
+      <div class="w95">
+        <div class="row mt-2">
+          <div class="col-md-3 col-sm-12">
+            <app-card-ref (emitter)="checkFilter()"></app-card-ref>
+          </div>
+          <div class="col-md-3 col-sm-12">
+            <app-card-authors (emitter)="checkFilter()"></app-card-authors>
+          </div>
+          <div class="col-md-3 col-sm-12">
+            <app-card-keywords (emitter)="checkFilter()"></app-card-keywords>
+          </div>
+          <div class="col-md-3 col-sm-12">
+            <app-card-year (emitter)="checkFilter()"></app-card-year>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-md-3 col-sm-12">
+            <app-card-geo (emitter)="checkFilter()"></app-card-geo>
+          </div>
+          <div class="col-md-3 col-sm-12">
+            <app-card-matrix (emitter)="checkFilter()"></app-card-matrix>
+          </div>
+          <div class="col-md-3 col-sm-12">
+            &nbsp;
+          </div>
+          <div class="col-md-3 col-sm-12">
+            &nbsp;
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="application-page" [hidden]="filterOn === true">
+    <div class="w95 centered data-gathering-header row mb-1">
+      <div class="col-8">
+        <ngb-alert [type]="'danger'" [dismissible]="false" *ngIf="alertMx" class="cache-alert clickable" (click)="onMxCache()"><span class="fa-solid fa-flask"></span></ngb-alert>
+      </div>
+      <div class="col-4">
+        <button class="btn btn-primary m-1 float-right" (click)="export()">Export</button>
+        <button class="btn btn-secondary m-1 float-right" (click)="filterOn = true">Back</button>
+      </div>
+    </div>
+    <div>
+      <app-grid [gridContent]="gridContent"></app-grid>
+    </div>

@@ -1,0 +1,426 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+// Font Awesome
+@import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "~@fortawesome/fontawesome-free/scss/solid.scss";
+@import "~@fortawesome/fontawesome-free/scss/regular.scss";
+@import "~@fortawesome/fontawesome-free/scss/brands.scss";
+
+// MDB SCSS
+// @import "~mdb-angular-ui-kit/assets/scss/mdb.scss";
+/* @import "../../node_modules/material-design-icons-iconfont/dist/material-design-icons.css";  */
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.aligned {
+    display: inline-block;
+}
+
+.color-primary {
+    color: #0d6efd;
+}
+
+.bg-color-primary {
+    background-color: #0d6efd;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+.filter-header {
+    background-color: #5f5f5f;
+    color: white;
+}
+
+.step {
+    width: 16em;
+    display: block;
+    background-color: #5f5f5f;
+    color: white;
+    border-top: solid 1px #5f5f5f;;
+    border-left: solid 1px #5f5f5f;;
+    border-right: solid 1px #5f5f5f;;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    text-align: center;
+    padding: 5px;
+    display: inline-block;
+}
+
+.data-gathering-arrows {
+    font-size: 28px !important;
+}
+
+.data-gathering-header {    
+    border-bottom: solid 1px #5f5f5f
+}
+
+.data-gathering-nav {    
+    float: right;
+    // padding: 5px;
+    cursor: pointer;
+}
+
+.h100 {
+    height: 100%;
+}
+
+.h90 {
+    height: 90%;
+}
+
+.h80 {
+    height: 80%;
+}
+
+.h70 {
+    height: 70%;
+}
+
+.h60 {
+    height: 60%;
+}
+
+.h50 {
+    height: 50%;
+}
+
+
+.w100 {
+    width: 100% !important;
+}
+
+.w95 {
+    width: 95% !important;
+}
+
+.w90 {
+    width: 90% !important;
+}
+
+.w80 {
+    width: 80% !important;
+}
+
+.w70 {
+    width: 70% !important;
+}
+
+.w60 {
+    width: 60% !important;
+}
+
+.w50 {
+    width: 50% !important;
+}
+
+.w40 {
+    width: 40% !important;
+}
+
+.w30 {
+    width: 30% !important;
+}
+
+.w20 {
+    width: 20% !important;
+}
+
+.m1px {
+    margin: 1px;
+}
+
+.m2px {
+    margin: 2px;
+}
+
+.m3px {
+    margin: 3px;
+}
+
+.m4px {
+    margin: 4px;
+}
+
+.m5px {
+    margin: 5px;
+}
+
+.vscrollable {
+    overflow-y: auto;
+}
+
+.scrollable {
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+.text-italic {
+    font-style: italic;
+}
+
+.middled {
+    vertical-align: middle;
+}
+
+.background-dark {
+    background-color: #424242;
+}
+
+.background-light-dark {
+    background-color: #5f5f5f;
+}
+
+
+.background-light {
+    background-color: #dfdfdf;
+}
+
+.background-white {
+    background-color: white;
+}
+
+.invisible {
+    display: none;
+}
+
+.evidence {
+    color: #ff4081;
+}
+
+.field {
+    // color: #cfe2ff
+    color: lightseagreen;
+}
+
+.chem {
+    // color: #a3cfbb
+    color: lightsalmon;
+}
+
+.isotope {
+    color: lightgreen;
+}
+
+.field-back {
+    // color: #cfe2ff
+    background-color: lightseagreen;
+}
+
+.chem-back {
+    // color: #a3cfbb
+    background-color: lightsalmon;
+}
+
+.isotope-back {
+    background-color: lightgreen;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.underlined {
+    border-bottom: solid 1px;
+}
+
+.inline {
+    display: inline;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.header-logo {
+    height: 3em;
+    width: auto;
+}
+
+.formlab-header {
+    width: 100%;
+    min-width: 100%;
+    height: 5em;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    margin: 0;
+    background-color: #424242;
+    color: white;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    padding-left: 0em;
+    padding-right: 0em;
+    z-index: 5000;
+}
+
+.application-page {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 7em;
+    bottom: 0;
+    margin: 0;
+    z-index: 0;
+}
+
+.centered {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.clickable {
+    cursor: pointer !important;
+}
+
+.application-frame {
+    margin-top: 4.5em;
+    width: 100%;
+}
+
+.card-settings {
+    padding: 2.5 em;
+    margin-top: 4em;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 80%;
+}
+
+.user-table {
+    width: 80%;
+    padding: 2px;
+    border: solid 1px #424242;
+    border-radius: 6px;
+}
+
+.bordered {
+    border: solid 1px;
+}
+
+.bordered-rounded {
+    border: solid 1px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.spinner-div {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 5em;
+    bottom: 0;
+    margin: 0;
+    z-index: 20;
+    background-color: white;
+}
+
+
+.application-content-sidebar-on {
+    position: fixed;
+    left: 221px;
+    top: 3em;
+}
+
+.application-content-sidebar-off {
+    position: fixed;
+    left: 2px;
+    top: 5em;
+}
+
+.application-content-right {
+    height: 100%;
+    position: fixed;
+    top: 5em;
+    bottom: 0;
+    margin: 0;
+    z-index: 100;
+    -webkit-animation: slideContentRight 1s backwards;
+    animation: slideContentRight 1s backwards;
+}
+
+.application-content-left {
+    height: 100%;
+    position: fixed;
+    top: 5em;
+    bottom: 0;
+    margin: 0;
+    z-index: 100;
+    -webkit-animation: slideContentLeft 1s forwards;
+    animation: slideContentLeft 1s forwards;
+}
+
+
+@-webkit-keyframes slideContentLeft {
+    from {
+        left: 221px;
+    }
+
+    to {
+        left: 0;
+    }
+}
+
+@keyframes slideContentLeft {
+    from {
+        left: 221px;
+    }
+
+    to {
+        left: 0;
+    }
+}
+
+@-webkit-keyframes slideContentRight {
+    from {
+        left: 0;
+    }
+
+    to {
+        left: 221px;
+    }
+}
+
+@keyframes slideContentRight {
+    from {
+        left: 0;
+    }
+
+    to {
+        left: 221px;
+    }
+}

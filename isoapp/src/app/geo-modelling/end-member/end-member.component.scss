@@ -1,0 +1,31 @@
+.endmember {
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    border-radius: 3px;
+    border: solid 1px gray;
+}
+
+.active-border {
+    border: solid 1px #0d6efd !important;
+}
+
+table {
+    border: solid 1px lightgray;
+    border-bottom: 0px !important;
+    border-right: 0px !important;
+    white-space: nowrap;
+}
+
+td, th {
+    max-width: 100%;
+    white-space: nowrap;
+    border-right: solid 1px lightgray;
+    border-bottom: solid 1px lightgray;
+    min-width: 6em;
+}
+
+thead {
+    background-color: lightgray;
+}

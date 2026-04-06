@@ -1,0 +1,38 @@
+<div class="modal-header">
+    <h5 class="modal-title" id="modal-basic-title">Filter authors</h5>
+</div>
+<div class="modal-body">
+    <div class="form-group row">
+        <div class="col-5 mr-0">
+            <input list="authlist" type="text" class="form-control" placeholder="Enter surname" [(ngModel)]="surname" (ngModelChange)="getAuthors()">
+            <datalist #authlist id="authlist"></datalist>
+        </div>
+        <div class="col-5 mr-0">
+            <input type="text" class="form-control" placeholder="Enter name" [(ngModel)]="name">
+        </div>
+        <div class="col-2 ml-0">
+            <i class="clickable fa-solid fa-circle-plus mt-plus data-gathering-arrows" (click)="addAuthor()"></i>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="list-container centered mt-1">
+                <div class="centered vscrollable" style="max-height: 15em !important;">
+                    <ul class="list-group list-group-light">
+                        <li *ngFor="let a of authors"
+                            class="list-group-item px-3 border-0 rounded-3 list-group-item-secondary mb-2">
+                            <div class="float-left">
+                                <button class="btn button-outline">{{ a }}</button>
+                            </div>
+                            <div class="float-right"><button class="btn" (click)="deleteFromList(a)"><i class="fa-solid fa-trash"></i></button></div>
+                        </li>
+                    </ul>
+                </div>                   
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="cancel()">Cancel</button>
+    <button type="button" class="btn btn-outline-dark" (click)="confirm()" [disabled]="authors.length <= 0">Confirm</button>
+</div>

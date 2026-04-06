@@ -1,0 +1,32 @@
+<div class="card">
+  <div class="card-header filter-header">
+    <div class="float-left"><app-query-connector (queryConnector)="setConnector($event)"></app-query-connector> Geo</div>
+    <div class="float-right clickable"><i class="fa-regular fa-pen-to-square" (click)="editCard()"></i></div>
+    <div class="float-right clickable" style="margin-right: 8px !important;"><i class="fa-solid fa-xmark" (click)="resetFilter()"></i></div>
+</div>
+  <div class="card-body">
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <label for="lat1">Top-left latitude</label>
+          <input [disabled]="disabled" type="text" class="form-control" id="lat1" [(ngModel)]="startLatitude">
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <label for="lon1">Top-left longitude</label>
+          <input [disabled]="disabled" type="text" class="form-control" id="lon1" [(ngModel)]="startLongitude">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <label for="lat2">Bottom-right latitude</label>
+          <input [disabled]="disabled" type="text" class="form-control" id="lat2" [(ngModel)]="endLatitude">
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <label for="lon2">Bottom-right longitude</label>
+          <input [disabled]="disabled" type="text" class="form-control" id="lon2" [(ngModel)]="endLongitude">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

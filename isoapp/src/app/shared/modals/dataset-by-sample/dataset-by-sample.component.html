@@ -1,0 +1,40 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Dataset for sample {{ params ? params.id: '' }}</h4>
+</div>
+<div class="modal-body" *ngIf="!!dataset">
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            Reference: <a href="{{ dataset && dataset.ref ? dataset.ref : '' }}" target="_blank">{{ dataset && dataset.ref ? dataset.ref : '' }}</a>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            Year: {{ dataset && dataset.year ? '' + dataset.year : '' }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div>Authors</div>
+            <div class="scrollable" style="max-height: 6em; font-size: small; padding: 0.5em; border: solid 1px gray">
+                {{ dataset.authors ? dataset.authors.trim() : '' }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <div>Internal keywords</div>
+            <div class="scrollable" style="max-height: 6em; font-size: small; padding: 0.5em; border: solid 1px gray">
+                {{ dataset.keywords ? dataset.keywords.trim() : '' }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <div>Metadata</div>
+            <div class="scrollable" style="max-height: 10em; font-size: small; padding: 0.5em; border: solid 1px gray">
+                {{ dataset.metadata ? dataset.metadata.trim() : '' }}
+            </div>
+        </div>
+    </div>    
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="close()">Cancel</button>
+</div>

@@ -1,0 +1,65 @@
+<div>
+    <div class="modal-header">
+        <h5 class="modal-title" id="modal-basic-title">Map filter</h5>
+    </div>
+    <div class="modal-body">
+        <div *ngIf="onlyMap === true">
+            <main class="mt-2">
+                <div id="ol-map" class="map-container" style="width: 100% !important; height: 500px !important;">
+                </div>
+            </main>
+        </div>
+        <div *ngIf="onlyMap === false">
+            <div class="row">
+                <div class="col-md-3 col-sm-12">
+                    <div class="text-left">
+                        Use the mouse for navigate and zoom the map. Press the SHIFT key + LEFT mouse button to draw a
+                        rectangular selection on the map.
+                    </div>
+                    <div><strong>Top coordinates:</strong></div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <label for="lat1">latitude</label>
+                            <input type="text" class="form-control" id="lat1" [(ngModel)]="topLat">
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <label for="long1">longitude</label>
+                            <input type="text" class="form-control" id="long1" [(ngModel)]="topLong">
+                        </div>
+                    </div>
+                    <div><strong>Bottom coordinates:</strong></div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <label for="lat2">latitude</label>
+                            <input type="text" class="form-control" id="lat2" [(ngModel)]="bottomLat">
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <label for="long2">longitude</label>
+                            <input type="text" class="form-control" id="long2" [(ngModel)]="bottomLong">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9 col-sm-12">
+                    <main class="mt-2">
+                        <div id="ol-map" class="map-container"
+                            style="width: 100% !important; height: 500px !important;">
+                        </div>
+                    </main>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="drawEnd && !onlyMap">
+            <div class="col-md-6 col-sm-12">
+                <app-geo-mouse-position [map]="map" style="padding: 1em;"></app-geo-mouse-position>
+            </div>
+            <div class="col-md-6 col-sm-12 text-center">
+                <app-geo-scale-line [map]="map"
+                    style="padding: 1em; position: relative !important;"></app-geo-scale-line>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="cancel()">Cancel</button>
+            <button type="button" class="btn btn-outline-dark" (click)="confirm()"
+                [disabled]="coordinates.length <= 0">Confirm</button>
+        </div>
+    </div>

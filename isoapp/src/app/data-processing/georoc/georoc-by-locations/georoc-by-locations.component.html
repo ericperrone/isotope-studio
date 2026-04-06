@@ -1,0 +1,30 @@
+<div>
+    <div *ngIf="spinnerOn === true" class="spinner-div">
+        <div class="d-flex align-items-center w50 bordered-rounded centered">
+            Loading locations list from GEOROC.
+            <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-11">
+            <input type="text" class="form-control" id="auth" placeholder="Filter by location name"  [(ngModel)]="selected" (ngModelChange)="filterLocations()">
+        </div>
+    </div>
+    <div style="max-height: 14em; border: solid 1px lightgray;" class="scrollable mt-1">        
+        <table class="w100" *ngIf="!!filteredLocations && filteredLocations.length > 0">
+            <tr *ngFor="let a of filteredLocations" (click)="select(a)" class="clickable" [style.background]="a.color ? 'orange' : 'white'">
+                <td>{{ a.name }}</td>
+            </tr>
+        </table>
+    </div>
+    <div style="margin-top: 9px !important;">
+        <div style="margin-top: 1px !important;" class="row" *ngIf="!!selection">
+            <div class="col-6">Selected: <span style="font-weight: bold;">{{ selection.name }}</span></div>
+            <div class="col-6 text-right">
+                <button type="button" class="btn btn-secondary" (click)="reset()">Reset</button>&nbsp;
+                <button type="button" class="btn btn-primary" (click)="use()" *ngIf="!spins">Use this</button>
+                <button type="button" class="btn btn-primary" *ngIf="!!spins"><i class="fa-solid fa-circle-notch fa-spin"></i></button>
+            </div>
+        </div>
+    </div>
+</div>

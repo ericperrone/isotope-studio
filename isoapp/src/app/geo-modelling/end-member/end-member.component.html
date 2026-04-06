@@ -1,0 +1,19 @@
+<div *ngFor="let em of endMembers" class="centered mt-2 mb-1" style="max-width: 95%; padding: 1px;">
+    <button type="button" class="btn btn-outline-primary" *ngIf="em.name === activeMember"><strong>{{ em.name }}</strong></button>
+    <button type="button" class="btn btn-outline-secondary" *ngIf="em.name !== activeMember" (click)="selectActive(em)">{{ em.name }}</button>
+    <div class="scrollable centered" style="max-width: 100%; max-height: 40%; border: 1px solid lightgray; padding: 1px;">
+        <table>
+            <thead>
+                <th *ngFor="let item of em.member">
+                    {{ item.name }}
+                 </th>
+            </thead>
+            <tr>
+                <td *ngFor="let item of em.member" class="clickable" (click)="onClick(item, em.name)" (contextmenu)="onRightClick($event)">
+                    <!-- <span style="background-color: orange;" *ngIf="true === item.selected">{{ item.value }}</span> -->
+                    <span [style.background]="item.selected ? 'orange' : 'white'">{{ item.value }}</span>
+                  </td>
+            </tr>
+        </table>
+    </div>
+</div>

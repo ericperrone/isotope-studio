@@ -1,0 +1,33 @@
+<app-header>[initialStatus]="'transitionLeft'"></app-header>
+<div class="application-page" @fade>
+    <div class="w95 centered data-gathering-header">
+        <div class="step">GEOROC data import</div>
+        <div class="data-gathering-nav">
+            <span class="far fa-arrow-alt-circle-left data-gathering-arrows" (click)="goPrevious()"></span>
+        </div>
+    </div>
+    <div class="w95 centered">
+        <ul ngbNav #nav="ngbNav" class="nav-tabs" [(activeId)]="active">
+            <li [ngbNavItem]="1">
+                <a ngbNavLink>By authors</a>
+                <ng-template ngbNavContent>
+                    <app-georoc-by-authors *ngIf="!disabled"></app-georoc-by-authors>
+                </ng-template>
+            </li>
+            <li [ngbNavItem]="2">
+                <a ngbNavLink>By locations</a>
+                <ng-template ngbNavContent>
+                    <app-georoc-by-locations *ngIf="!disabled"></app-georoc-by-locations>
+                </ng-template>
+            </li>
+            <li [ngbNavItem]="3">
+                <a ngbNavLink>By polygon</a>
+                <ng-template ngbNavContent>
+                    <app-georoc-by-polygon *ngIf="!disabled"></app-georoc-by-polygon>
+                </ng-template>
+            </li>
+        </ul>
+        
+        <div [ngbNavOutlet]="nav" class="mt-2"></div>
+    </div>
+</div>

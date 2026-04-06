@@ -1,0 +1,16 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Unit Conversion</h4>
+</div>
+<div class="modal-body">
+    <p>Measure unit conversion in PPM or WT% is suggested. Choose the measure unit abd press the "Confirm" button. Otherwise, press the "Cancel" button to exit without conversion.</p>
+    <div style="text-align: center;">
+        
+        <div style="display: inline-block;"><input name="UM" type="radio" value="wp%" (click)="UM = 'wt%'" id="wt"> WT%</div>
+        
+        <div style="display: inline-block; margin-left: 1em;"><input name="UM" type="radio" value="ppm" (click)="UM = 'ppm'" id="ppm"> PPM</div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="cancel()">Cancel</button>
+    <button type="button" class="btn btn-outline-dark" (click)="confirm()">Confirm</button>
+</div>

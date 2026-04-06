@@ -1,0 +1,18 @@
+<div class="modal-header">
+    <h5 class="modal-title" id="modal-basic-title">Filter reference</h5>
+</div>
+<div class="modal-body">
+    <div class="form-group">
+        <!-- <label for="ref">Dataset reference</label> -->
+        <input type="text" list="linklist" class="form-control" id="ref" placeholder="Enter the document DOI or another reference" aria-describedby="refhelp"
+            [(ngModel)]="dataSetRef" (ngModelChange)="getLinks()">
+        <datalist #linklist id="linklist"></datalist>
+        <!-- <small id="refhelp" class="form-text text-muted">Enter the document DOI (or an equivalent http
+            reference)</small> -->
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="cancel()">Cancel</button>
+    <button type="button" class="btn btn-outline-dark" (click)="confirm()"
+        [disabled]="dataSetRef.length <= 0">Confirm</button>
+</div>

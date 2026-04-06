@@ -1,0 +1,37 @@
+<div class="w90 text-center">
+    <div class="centered text-center">
+        <input type="text" class="form-control" placeholder="Endmember name" [(ngModel)]="filter"
+            (ngModelChange)="selectNames()" style="border: solid 1px gray">
+    </div>
+    <div class="centered text-center scrollable w100 lists">
+        <table class="w100">
+            <tr *ngFor="let sn of nameList" (click)="select(sn)" class="clickable">
+                <td>{{ sn }}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="centered text-center scrollable w100 lists mt-3">
+        <table class="w100" *ngIf="!!showReservoir">
+            <thead>
+                <tr class="bottom-border">
+                    <th>Name</th>
+                    <th>Element</th>
+                    <th>Value</th>
+                    <th>Unit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let r of this.reservoirs" class="clickable bottom-border" (click)="selectRow(r)"
+                    [style.background]="r.selected ? 'orange' : 'white'">
+                    <td>{{ r.name }}</td>
+                    <td>{{ r.element }}</td>
+                    <td>{{ r.value }}</td>
+                    <td>{{ r.um ? r.um : '' }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="w100 text-right" *ngIf="!!showReservoir">
+        <button class="btn btn-primary m-1" [disabled]="useButtonDisabled" (click)="use()">Use</button>
+    </div>
+</div>

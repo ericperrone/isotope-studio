@@ -1,0 +1,166 @@
+@charset "ISO-8859-1";
+
+.clickable {
+	cursor: pointer;
+}
+
+.centered {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.text-xlarge {
+	font-size: x-large;
+}
+
+.text-xxlarge {
+	font-size: xx-large;
+}
+
+
+.text-center {
+	text-align: center;
+}
+
+.text-bold {
+	font-weight: bold;
+}
+
+.page-header {
+	width: 100%;
+	min-width: 100%;
+	height: 5em;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	margin: 0;
+	background-color: #424242;
+	color: white;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	padding-left: 0em;
+	padding-right: 0em;
+	z-index: 5000;
+}
+
+.background-light-dark {
+	background-color: #565656;
+}
+
+.main-menu-img {
+	margin-top: -0.5em;
+	float: right;
+}
+
+.main-menu-title {
+	margin-left: 2em;
+	display: inline-block;
+	color: white;
+	font-size: xx-large;
+}
+
+.fragment-start {
+	margin-top: 5em;
+}
+
+.menu-toggler {
+	margin-left: 1.5em;
+	margin-top: 1.1em;
+	display: inline-block;
+}
+
+.sidebar-on {
+    width: 220px;
+    min-width: 220px;
+    height: 100%;
+    position: fixed;
+    top: 5em;
+    left: 0;
+    bottom: 0;
+    margin: 0;
+    z-index: 100;
+}
+
+.sidebar-off {
+    width: 220px;
+    min-width: 220px;
+    height: 100%;
+    position: fixed;
+    top: 5em;
+    left: -220px;
+    bottom: 0;
+    margin: 0;
+    z-index: 100;
+}
+
+.sidebar-left {
+    width: 220px;
+    min-width: 220px;
+    height: 100%;
+    position: fixed;
+    top: 5em;
+    bottom: 0;
+    margin: 0;
+    z-index: 100;
+    -webkit-animation: slideLeft 1s forwards;
+    animation: slideLeft 1s forwards;
+}
+
+.sidebar-right {
+    width: 220px;
+    min-width: 220px;
+    height: 100%;
+    position: fixed;
+    top: 5em;
+    bottom: 0;
+    margin: 0;
+    z-index: 100;
+    -webkit-animation: slideRight 1s forwards;
+    animation: slideRight 1s forwards;
+}
+
+.sidebar-item {
+	margin-top: 1em;
+    margin-left: 1.5em;
+    cursor: pointer;
+}
+
+@-webkit-keyframes slideLeft {
+    from {
+        left: 0;
+    }
+
+    to {
+        left: -220px;
+    }
+}
+
+@keyframes slideLeft {
+    from {
+        left: 0;
+    }
+
+    to {
+        left: -220px;
+    }
+}
+
+@-webkit-keyframes slideRight {
+    from {
+        left: -220px;
+    }
+
+    to {
+        left: 0;
+    }
+}
+
+@keyframes slideRight {
+    from {
+        left: -220px;
+    }
+
+    to {
+        left: 0;
+    }
+}

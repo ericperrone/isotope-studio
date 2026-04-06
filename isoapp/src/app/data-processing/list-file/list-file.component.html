@@ -1,0 +1,51 @@
+<app-header>[initialStatus]="'transitionLeft'"></app-header>
+<div class="application-page" @fade>
+    <div class="w95 centered data-gathering-header">
+        <div class="step">Dataset list</div>
+        <div class="data-gathering-nav">
+            <span class="far fa-arrow-alt-circle-left data-gathering-arrows" (click)="goPrevious()"></span>&nbsp;
+            <span class="far fa-arrow-alt-circle-right data-gathering-arrows" (click)="goNext()"
+                [style.color]="selected.length < 1 ? 'lightgray' : 'black'"></span>
+        </div>
+    </div>
+    <div class="w95 centered mt-1">
+        <div style="margin: 2px;">
+            Select a dataset within those available, if any;
+            or press the button to upload a new dataset file: <button type="button" class="btn btn-outline-dark"
+                (click)="uploadFile()"><i class="fa-solid fa-upload"></i> upload</button>.
+        <!-- </div>
+        <div style="margin: 2px;"> -->
+            You can also try to download data from external sites (login as administrator is required); in this case press the button: <button type="button"
+                class="btn btn-outline-dark" (click)="externalSites()" [disabled]="!storeService.getCurrentUser()"><i class="fa-solid fa-globe"></i>
+                Explore external sites</button>
+        </div>
+        <!-- <div class="centered text-left" *ngIf="!!selected && selected.length > 0"><span class="bold selected-file">{{ selected }}</span></div> -->
+        <div *ngIf="spinnerOn === true" class="spinner-div">
+            <div class="d-flex align-items-center w50 bordered-rounded centered">
+                <strong>Loading...</strong>
+                <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+            </div>
+        </div>
+        <div class="list-container centered mt-1">
+            <p>Available data files:</p>
+            <div class="centered vscrollable" style="max-height: 35em !important;">
+                <ul class="list-group list-group-light">
+                    <li *ngFor="let f of datasets"
+                        class="list-group-item px-3 border-0 rounded-3 list-group-item-secondary mb-2">
+                        <div class="float-left">
+                            <button class="btn button-outline" (click)="processFile(f)"><span
+                                    [style.color]="selected === f.fileName ? 'red' : 'black'">{{ f.fileName
+                                    }}</span></button>
+                        </div>
+                        <div class="float-right"><a href="{{ serviceUrl + 'get-file-link/' + f.fileName }}" target="_blank"><i
+                                    class="fa-solid fa-download link-button"></i></a></div>
+                        <div class="float-right"><button class="btn" (click)="deleteDataset(f)"><i
+                                    class="fa-solid fa-trash"></i></button></div>
+                        <div class="float-right"><button class="btn" (click)="showInfo(f)"><i
+                                    class="fa-solid fa-circle-info"></i></button></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

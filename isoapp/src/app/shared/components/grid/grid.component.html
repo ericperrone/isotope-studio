@@ -1,0 +1,56 @@
+<div>
+  <div class="w95 centered mt-1 scrollable" style="max-height: 30em;">
+    <table #maingrid class="table table-bordered table-hover" *ngIf="tableOn === true" style="font-size: small;">
+      <thead class="thead-light">
+        <ng-template ngFor let-h [ngForOf]="gridHeader">
+          <th scope="col" *ngIf="h.visible === true">
+            <div class="header-color inline-block selected" *ngIf="h.selected === true">{{ h.content }}</div>
+            <div class="header-color inline-block" *ngIf="h.selected === false">{{ h.content }}</div>
+            <div ngbDropdown class="inline-block header-menu-button" *ngIf="h.check === false">
+              <button type="button" class="header-button" id="dropdownBasic1" ngbDropdownToggle>
+                <i class="fa-solid fa-bars"></i>
+              </button>
+              <div ngbDropdownMenu aria-labelledby="dropdownBasic1" style="z-index: 2000 !important;">
+                <button ngbDropdownItem (click)="selectCol(h)">Select column</button>
+                <button ngbDropdownItem (click)="unselectCol(h)">Deselect column</button>
+                <button ngbDropdownItem (click)="hideCol(h)">Hide column</button>
+                <button ngbDropdownItem (click)="selectItem(h)">Select item data</button>
+                <button ngbDropdownItem (click)="deselectItem()">Reset item data sel.</button>
+              </div>
+            </div>
+          </th>
+        </ng-template>
+      </thead>
+      <tbody #gridbody>
+        <tr *ngFor="let r of screenRows">
+          <ng-template ngFor let-e [ngForOf]="r">
+            <td scope="col" *ngIf="e.visible === true" class="clickable" (click)="onCheck(e, $event)"
+              (contextmenu)="onRightClick(e, $event)" [style.background]="e.selected ? 'orange' : 'white'">
+              <span *ngIf="e.check === false" class="p-0 transparent clickable">{{ e.content }}</span>
+            </td>
+          </ng-template>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="w95 centered text-right mt-2">
+    <div class="float-left" *ngIf="table && table.length > 0">found {{ gridCacheRows.length }} records. {{
+      screenRows.length }} displayed.</div>
+    <button class="btn btn-primary m-1" [disabled]="index <= 0" (click)="up()"><i
+        class="fa-regular fa-circle-up"></i></button>
+    <button class="btn btn-primary m-1" [disabled]="downOk === false" (click)="down()"><i
+        class="fa-regular fa-circle-down"></i></button>
+    <button class="btn btn-primary m-1" *ngIf="!spinSelect" (click)="selectAll()">Select all</button>
+    <button class="btn btn-primary m-1" *ngIf="spinSelect"><i class="fa-solid fa-circle-notch fa-spin"></i> Select
+      all</button>
+    <button class="btn btn-primary m-1" *ngIf="!spinDeselect" (click)="deselectAll()">Deselect all</button>
+    <button class="btn btn-primary m-1" *ngIf="spinDeselect"><i class="fa-solid fa-circle-notch fa-spin"></i> Deselect
+      all</button>
+    <button class="btn btn-primary m-1" [disabled]="selectedCols.length <= 1" (click)="merge()">Merge columns</button>
+
+    <button class="btn btn-primary m-1" [disabled]="selectedRowsIndex.length <= 0" (click)="use()">Use selected
+      data</button>
+    <button class="btn btn-primary m-1" [disabled]="deleteFlag === false" (click)="restoreAll()">Restore all</button>
+    <button class="btn btn-primary m-1" (click)="manualMix()">Manual Mix</button>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Dataset</h4>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-sm-12 col-md-4">Reference/DOI:</div>
+        <div class="col-sm-12 col-md-8">
+            <input type="text" class="form-control" [(ngModel)]="dataset.ref">
+        </div>
+        <div class="col-sm-12 col-md-4">Year:</div>
+        <div class="col-sm-12 col-md-8">
+            <input type="number" class="form-control" [(ngModel)]="dataset.year">
+        </div>
+        <div class="col-sm-12 col-md-4">Authors:</div>
+        <div class="col-sm-12 col-md-8">
+            <input type="text" class="form-control" [(ngModel)]="dataset.authors">
+        </div>
+        <div class="col-sm-12 col-md-4">Keywords:</div>
+        <div class="col-sm-12 col-md-8">
+            <input type="text" class="form-control" [(ngModel)]="dataset.keywords">
+        </div>        
+        <div class="col-sm-12 col-md-4">Metadata:</div>
+        <div class="col-sm-12 col-md-8">
+            <!-- <input type="text" class="form-control" [(ngModel)]="dataset.metadata"> -->
+             <textarea [(ngModel)]="dataset.metadata" rows="4" class="form-control"> </textarea>
+        </div>
+
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="cancel()">Close</button>
+    <button type="button" class="btn btn-outline-primary" (click)="save()">Save</button>
+</div>

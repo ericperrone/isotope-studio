@@ -1,0 +1,110 @@
+.menu-toggler {
+    margin-left: 1.5em;
+}
+
+.menu-user {
+    margin-right: 1.5em;
+    float: right;
+}
+
+.menu-account {
+    height: 24px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: text-bottom;
+    margin-right: 12px;
+}
+
+.sidebar-on {
+    width: 220px;
+    min-width: 220px;
+    height: 100%;
+    position: fixed;
+    top: 3em;
+    left: 0;
+    bottom: 0;
+    margin: 0;
+    z-index: 100;
+}
+
+.sidebar-off {
+    width: 220px;
+    min-width: 220px;
+    height: 100%;
+    position: fixed;
+    top: 3em;
+    left: -220px;
+    bottom: 0;
+    margin: 0;
+    z-index: 100;
+}
+
+.sidebar-left {
+    width: 220px;
+    min-width: 220px;
+    height: 100%;
+    position: fixed;
+    top: 3em;
+    bottom: 0;
+    margin: 0;
+    z-index: 100;
+    -webkit-animation: slideLeft 1s forwards;
+    animation: slideLeft 1s forwards;
+}
+
+.sidebar-right {
+    width: 220px;
+    min-width: 220px;
+    height: 100%;
+    position: fixed;
+    top: 3em;
+    bottom: 0;
+    margin: 0;
+    z-index: 100;
+    -webkit-animation: slideRight 1s forwards;
+    animation: slideRight 1s forwards;
+}
+
+.sidebar-item {
+    margin-left: 1.5em;
+}
+
+@-webkit-keyframes slideLeft {
+    from {
+        left: 0;
+    }
+
+    to {
+        left: -220px;
+    }
+}
+
+@keyframes slideLeft {
+    from {
+        left: 0;
+    }
+
+    to {
+        left: -220px;
+    }
+}
+
+@-webkit-keyframes slideRight {
+    from {
+        left: -220px;
+    }
+
+    to {
+        left: 0;
+    }
+}
+
+@keyframes slideRight {
+    from {
+        left: -220px;
+    }
+
+    to {
+        left: 0;
+    }
+}

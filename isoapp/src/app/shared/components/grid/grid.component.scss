@@ -1,0 +1,56 @@
+thead {
+    background-color: gainsboro;
+}
+
+td, th {
+    max-width: 100%;
+    min-width: 8em;
+    white-space: nowrap;
+    border-right: solid 1px lightgray;
+}
+
+th {
+    top: 0;
+    position: sticky;
+    z-index: 1;
+    background-color: gainsboro;
+}
+
+.header-color {
+    background-color: gainsboro;
+}
+
+.header-menu-button {
+    background-color: gainsboro;
+    border-radius: 10px;
+}
+
+.selected {
+    background-color: orange;
+    color: black;
+    border-radius: 3px;
+}
+
+.transparent {
+    background-color: transparent;
+}
+
+.header-button {
+    background-color: gainsboro !important;
+    border: 0px !important;
+    padding: 0px !important;
+    display: inline-block;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.scrollable-container {
+    overflow-y: auto;
+    overflow-x: auto;
+    display: flex;
+    flex-direction: column;
+  }

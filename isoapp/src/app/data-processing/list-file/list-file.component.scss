@@ -1,0 +1,18 @@
+.list-container {
+    width: 90%;
+    height: auto;
+    overflow-y: auto;
+}
+
+.selected-file {
+    background-color: lightgoldenrodyellow;
+    padding: 5px;
+}
+
+.link-button {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+    color: black;
+}

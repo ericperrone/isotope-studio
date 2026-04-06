@@ -1,0 +1,29 @@
+<div class="modal-body" *ngIf="!!params && !!params.id">
+    <div *ngIf="id > 0" class="dati">
+        <table>
+            <tr>
+                <td class="label">Unit</td>
+                <td>{{ um }}</td>
+            </tr>
+            <tr>
+                <td class="label">Technique</td>
+                <td>{{ technique }}</td>
+            </tr>
+            <tr>
+                <td class="label">Uncertainty</td>
+                <td>{{ uncertainty }}</td>
+            </tr>
+            <tr>
+                <td class="label">Uncertainty type</td>
+                <td>{{ uncertaintyType }}</td>
+            </tr>
+            <tr>
+                <td class="label">Ref.Std.</td>
+                <td>{{ refstd }}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="dataset-link">
+        <a class="nav-link active clickable" (click)="emit(params.id)">Get dataset for selected sample: ITINERIS_ID <span style="color: blue; font-weight: bold;">{{'' + params.id}}</span></a>
+    </div>
+</div>

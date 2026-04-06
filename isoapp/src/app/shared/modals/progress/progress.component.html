@@ -1,0 +1,12 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Downloading data</h4>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-8">{{ progressText }}</div>
+        <div class="col-4 text-center"><i class="fa-solid fa-circle-notch fa-spin"></i></div>
+    </div>
+</div>
+<div class="modal-footer text-right">
+    <button type="button" class="btn btn-danger" (click)="interrupt()">Cancel</button>
+</div>

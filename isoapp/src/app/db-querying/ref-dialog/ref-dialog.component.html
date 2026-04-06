@@ -1,0 +1,25 @@
+<div class="modal-header">
+    <h5 class="modal-title" id="modal-basic-title">Reference list</h5>
+</div>
+<div class="modal-body">
+    <div class="scrollable" style="max-height: 22em;">
+        <table *ngIf="ready == true" cellspacing="10">
+            <tr>
+                <th>Reference</th>
+                <th>Metadata</th>
+            </tr>
+            <tr *ngFor="let d of data">
+                <!-- <td><a href="{{ d.ref }}" target="_blank">{{ d.ref }}</a></td> -->
+                <td><span style="font-weight: bold; color: blue;" class="clickable" (click)="selectRef(d.ref)">{{ '' + d.ref }}</span></td>
+                <td>
+                    <div class="scrollable" style="max-height: 6em; font-size: small; padding: 0.5em; border: solid 1px gray">
+                        {{ d.metadata }}
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="cancel()">Close</button>
+</div>

@@ -1,0 +1,36 @@
+.task {
+    background-color: gainsboro;
+    color: black;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    padding: 3px;
+    height: 2.7em;
+}
+
+select {
+    max-width: 90% !important;
+    display: inline-block !important;
+}
+
+.table-input {
+    border-radius: 5px;
+    background-color: beige;
+    border-color: lightgrey;
+}
+
+.table-input-color {
+    border-color: transparent !important;
+    height: 40px !important;
+}
+
+.table-ctrl {
+    border: solid 1px;
+}
+
+td, th {
+    padding: 5px;
+}
+
+label {
+    margin-left: 5px !important;
+}

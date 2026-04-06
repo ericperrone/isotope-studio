@@ -1,0 +1,109 @@
+<div class="application-frame" style="background-color: white; margin-top: 5em !important">
+    <div class="row header pt-1 pb-1">
+        <div class="col-5 text-center">
+            Width:
+            <input type="number" class="form-control" [(ngModel)]="chartWidth" (ngModelChange)="changeSize = true"
+                style="max-width: 5em; display: inline-block;">
+            Height:
+            <input type="number" class="form-control" [(ngModel)]="chartHeight" (ngModelChange)="changeSize = true"
+                style="max-width: 5em; display: inline-block;">
+            &nbsp;
+            <button class="btn btn-outline-dark" type="button" (click)="chartSizeChange()" [disabled]="!changeSize"><i
+                    class="fa-solid fa-expand"></i></button>&nbsp;
+            <input type="checkbox" [(ngModel)]="fixedRatio" (ngModelChange)="chartSizeChange()"> Fixed ratio (4:3)
+        </div>
+        <div class="col-4">
+            &nbsp;
+        </div>
+        <div class="col-3 text-right">
+            <button style="margin-right: 3px;" class="btn btn-dark" type="button" (click)="options()">
+                Options
+            </button>
+            <button class="btn btn-outline-dark" type="button" (click)="donwloadCsv()"><i
+                    class="fa-solid fa-download"></i></button>
+            <button class="btn btn-outline-dark" type="button" (click)="ref ? ref.close() : undefined">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+    </div>
+    <div class="w100">
+        <div class="row bottom-bordered w95 centered">
+            <div class="col-1">
+                Operator
+                <select class="form-select aligned" [(ngModel)]=operators[0] (ngModelChange)="checkOperator(0)">
+                    <option value="0"></option>
+                    <option value="1">x+y</option>
+                    <option value="2">x/y</option>
+                </select>
+            </div>
+            <div class="col-3">
+                Vertex A
+                <select class="form-select aligned ml-1" [(ngModel)]=vertices[0] (ngModelChange)="checkElements()">
+                    <option *ngFor="let e of elementList">{{ e }}</option>
+                </select>
+            </div>
+            <div class="col-1">
+                Operator
+                <select class="form-select aligned" [(ngModel)]=operators[1] (ngModelChange)="checkOperator(1)">
+                    <option value="0"></option>
+                    <option value="1">x+y</option>
+                    <option value="2">x/y</option>
+                </select>
+            </div>
+            <div class="col-3">
+                Vertex B
+                <select class="form-select aligned ml-1" [(ngModel)]=vertices[1] (ngModelChange)="checkElements()">
+                    <option *ngFor="let e of elementList">{{ e }}</option>
+                </select>
+            </div>
+            <div class="col-1">
+                Operator
+                <select class="form-select aligned" [(ngModel)]=operators[2] (ngModelChange)="checkOperator(2)">
+                    <option value="0"></option>
+                    <option value="1">x+y</option>
+                    <option value="2">x/y</option>
+                </select>
+            </div>
+            <div class="col-3">
+                Vertex C
+                <select class="form-select aligned ml-1" [(ngModel)]=vertices[2] (ngModelChange)="checkElements()">
+                    <option *ngFor="let e of elementList">{{ e }}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row bottom-bordered w95 centered" *ngIf="operators[0] + operators[1] + operators[2] > 0">
+            <div class="col-1">
+                &nbsp;
+            </div>
+            <div class="col-3">
+                <select class="form-select aligned ml-1" [(ngModel)]=vertices2[0] (ngModelChange)="checkElements2(0)"
+                    [disabled]="operators[0] === 0">
+                    <option *ngFor="let e of elementList">{{ e }}</option>
+                </select>
+            </div>
+            <div class="col-1">
+                &nbsp;
+            </div>
+            <div class="col-3">
+                <select class="form-select aligned ml-1" [(ngModel)]=vertices2[1] (ngModelChange)="checkElements2(1)"
+                    [disabled]="operators[1] === 0">
+                    <option *ngFor="let e of elementList">{{ e }}</option>
+                </select>
+            </div>
+            <div class="col-1">
+                &nbsp;
+            </div>
+            <div class="col-3">
+                <select class="form-select aligned ml-1" [(ngModel)]=vertices2[2] (ngModelChange)="checkElements2(2)"
+                    [disabled]="operators[2] === 0">
+                    <option *ngFor="let e of elementList">{{ e }}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="centered" *ngIf="showChart" style="margin-top: 1em;">
+        <canvasjs-chart class="m-1 mb-1" [options]="chartOptions" class="centered"
+            (chartInstance)="getChartInstance($event)"></canvasjs-chart>
+    </div>
+</div>

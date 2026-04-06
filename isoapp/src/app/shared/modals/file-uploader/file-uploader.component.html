@@ -1,0 +1,95 @@
+<div class="modal-header">
+    <h5 class="modal-title" id="modal-basic-title">Dataset upload</h5>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="form-group col-sm">
+            <label for="ref">Dataset reference (DOI or other link)</label>
+            <input type="text" class="form-control" id="ref" aria-describedby="refhelp" [(ngModel)]="dataSetRef">
+        </div>
+        <div class="form-group col-sm">
+            <label for="year">Year of paper publication</label>
+            <input type="text" class="form-control" id="year" [(ngModel)]="year">
+        </div>
+    </div>
+
+    <div class="form-group row mt2">
+        <div class="col-11">
+            <label for="auth">Author(s)</label>
+            <input type="text" class="form-control" id="auth" aria-describedby="authhelp" [(ngModel)]="authors"
+                [disabled]="true">
+            <!-- <small id="authhelp" class="form-text text-muted">Enter the authors list comma separated</small> -->
+        </div>
+        <div class="col-1">
+            <button class="btn" (click)="authorDialog()" style="margin-top: 1.5em;"><i
+                    class="fa-solid fa-user-pen"></i></button>
+        </div>
+    </div>
+
+    <div class="form-group row mt2">
+        <div class="col-12">
+            <label for="keywords">Free keywords</label>
+            <input type="text" class="form-control" id="keywords" aria-describedby="keywordshelp" [(ngModel)]="keywords"
+                placeholder="Enter some free keyword for the dataset">
+        </div>
+    </div>
+
+    <div class="form-group row mt2">
+        <div class="col-12">
+            <label for="thesauri">Keywords by thesauri</label>
+            <input type="text" class="form-control" id="keywords" aria-describedby="keywordshelp" [(ngModel)]="thesauri" [disabled]="true">
+        </div>
+        <div class="col-12" style="text-align: right;">
+            <button type="button" class="btn btn-outline-dark" (click)="thesauriModal()">Open thesauri modal</button>
+        </div>
+    </div>
+
+    <div class="form-group row mt2">
+        <div class="col-8">
+            <label for="metadata">Dataset metadata: paste metadata in the area or press the button to choose a
+                file</label>
+        </div>
+        <div class="col-4" style="text-align: right">
+            <button type="button" class="btn btn-outline-dark" (click)="fireMetaClick()">Choose a metadata file</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <textarea class="form-control mt-1" id="metadata" aria-describerdby="metadatadesc" [(ngModel)]="metadata"
+                placeholder="Paste metadata here."></textarea>
+            <input #hiddenmetainput type="file" name="metafile" class="form-control file-upload hidden"
+                (change)="setMetadata($event)">
+        </div>
+    </div>
+
+    <div class="form-group row mt2">
+        <form #uploader id="uploader" action="{{ actionUrl + 'upload' }}" method="post" enctype="multipart/form-data"
+            target="hidden-frame">
+            <div class="mt-2 w95 centered">
+                <div class="inline-block">Press the button to get the dataset file: </div>
+                <div class="float-right">
+                    <button type="button" class="btn btn-outline-dark" (click)="fireClick()">Choose a dataset
+                        file</button>
+                    <input #hiddeninput type="file" name="file" class="form-control file-upload hidden"
+                        (change)="setFile($event)">
+                </div>
+                <div class="w95 centered text-center mt-3 filename">
+                    {{ uploadedFile }}
+                </div>
+            </div>
+        </form>
+    </div>
+    <iframe name="hidden-frame" style="display: none;"></iframe>
+    <div *ngIf="inProgress" class="progress">
+        <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"
+            attr.aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100"
+            [ngStyle]="{ width: progress + '%' }">
+            {{ progress }}%
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="cancel()">Cancel</button>
+    <button type="button" class="btn btn-outline-dark" (click)="confirm()"
+        [disabled]="uploadedFile.length <= 0 && !(dataSetRef.length > 0 || authors.length > 0 || keywords.length > 0)">Submit</button>
+</div>

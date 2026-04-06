@@ -1,0 +1,31 @@
+<div class="modal-header">
+    <h5 class="modal-title" id="modal-basic-title">Filter matrix</h5>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-sm-12 col-md-6">
+            Selected: <span style="font-weight: bold;">{{ selectedMatrix.matrix }}</span>
+        </div>
+        <div class="col-sm-12 col-md-6 text-right">
+            <button type="button" class="btn btn-outline-dark" (click)="back()" [disabled]="backDisabled">Back</button>
+            <button type="button" class="btn btn-outline-dark" (click)="forward()" [disabled]="forwardDisabled">Forward</button>
+        </div>
+    </div>
+    <div class="scrollable" style="max-height: 10em; margin-top: 0.5em;">
+        <table *ngIf="ready === true" style="width: 100%">
+            <tr *ngFor="let item of activeMatrices">
+                <td class="clickable" (click)="select(item)" [style.background]="item.selected ? 'orange' : 'white'"> {{ item.matrix }} </td>
+            </tr>
+        </table>
+    </div>
+    <!-- <div class="form-group">
+        <label for="matrices">Select</label>
+        <input type="text" class="form-control" id="ref" placeholder="Enter reference" aria-describedby="refhelp"
+            [(ngModel)]="matrix">
+        <small id="refhelp" class="form-text text-muted">Enter any keyword useful to identify the document (i.e. the title or a part of the title)</small>
+    </div> -->
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="cancel()">Cancel</button>
+    <button type="button" class="btn btn-outline-dark" (click)="confirm()" [disabled]="selectedMatrix.matrix.length <= 0">Confirm</button>   
+</div>

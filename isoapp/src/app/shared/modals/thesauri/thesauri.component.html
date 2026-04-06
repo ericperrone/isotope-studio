@@ -1,0 +1,18 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Thesauri list</h4>
+</div>
+<div class="modal-body" *ngIf="ready === true">
+    <div>
+        Thesauri list:
+    </div>
+    <div *ngIf="!!thesauriList && thesauriList.length > 0">
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let item of thesauriList">
+                <span class="clickable selectable" (click)="openThesaurus(item)">{{ item.key }}</span> {{ ' [' + item.src + ']' }}
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="close()">Close</button>
+</div>

@@ -1,0 +1,152 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{ (!!params && !!params.headerText) ? params.headerText : '' }}</h4>
+</div>
+<div class="modal-body">
+
+    <div>
+        <div class="task">Choose X axis and Y axis.
+            <div class="float-right">
+            </div>
+        </div>
+        <div>
+            <div class="row">
+                <div class="col-2">Operator</div>
+                <div class="col-4">X Axis</div>
+                <div class="col-2">Operator</div>
+                <div class="col-4">Y Axis</div>
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    <select class="form-select" [(ngModel)]="xOperator" (ngModelChange)="xOperatorChange()">
+                        <option value="0"></option>
+                        <option value="1">1/x</option>
+                        <option value="2">x/y</option>
+                    </select>
+                </div>
+                <div class="col-4">
+                    <select class="form-select" [(ngModel)]="xSelected" (ngModelChange)="selectedChange()">
+                        <option *ngFor="let x of xAxis">{{ x }}</option>
+                    </select>
+                </div>
+                <div class="col-2">
+                    <select class="form-select" [(ngModel)]="yOperator" (ngModelChange)="yOperatorChange()">
+                        <option value="0"></option>
+                        <option value="1">1/x</option>
+                        <option value="2">x/y</option>
+                    </select>
+                </div>
+                <div class="col-4">
+                    <select class="form-select" [(ngModel)]="ySelected" (ngModelChange)="selectedChange()">
+                        <option *ngFor="let y of yAxis">{{ y }}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row" *ngIf="'2' === xOperator || '2' === yOperator">
+                <div class="col-2"></div>
+                <div class="col-4">
+                    <select class="form-select" [(ngModel)]="xSelected2" *ngIf="'2' === xOperator"
+                        (ngModelChange)="selectedChange()">
+                        <option *ngFor="let x of xAxis">{{ x }}</option>
+                    </select>
+                </div>
+                <div class="col-2"></div>
+                <div class="col-4">
+                    <select class="form-select" [(ngModel)]="ySelected2" *ngIf="'2' === yOperator"
+                        (ngModelChange)="selectedChange()">
+                        <option *ngFor="let y of yAxis">{{ y }}</option>
+                    </select>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <input type="checkbox" class="form-check-input p-1" id="xlog" [(ngModel)]="xLog"
+                        (ngModelChange)="xLogHandler()">
+                    <label class="form-check-label ml-1" for="xlog">
+                        X logarithmic scale
+                    </label>
+                </div>
+                <div class="col-6">
+                    <input type="checkbox" class="form-check-input p-1" id="ylog" [(ngModel)]="yLog"
+                        (ngModelChange)="yLogHandler()">
+                    <label class="form-check-label ml-1" for="ylog">
+                        Y logarithmic scale
+                    </label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-2">X range: </div>
+                <div class="col-5"><input type="number" class="form-control" placeholder="xAxis min."
+                        [(ngModel)]="xRange.min"></div>
+                <div class="col-5"><input type="number" class="form-control" placeholder="xAxis max."
+                        [(ngModel)]="xRange.max"></div>
+            </div>
+            <div class="row">
+                <div class="col-2">Y range: </div>
+                <div class="col-5"><input type="number" class="form-control" placeholder="yAxis min."
+                        [(ngModel)]="yRange.min"></div>
+                <div class="col-5"><input type="number" class="form-control" placeholder="yAxis max."
+                        [(ngModel)]="yRange.max"></div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="task mt-2">Data definition: {{ params?.anyParams.selection.length }} points to assign. Use button to
+            add a new data series. <span class="float-right"><button type="button" class="btn btn-success"
+                    (click)="addDataSeries()"><i class="fa-regular fa-plus"></i></button></span>
+        </div>
+        <div *ngIf="dataSeries.series.length > 0">
+            <table class="table table-bordered table-hover w95 centered">
+                <tr>
+                    <th>Name</th>
+                    <th>Color</th>
+                    <th><button type="button" class="btn btn-outline-dark table-ctrl" (click)="addDataToSeries()"
+                            [disabled]="params?.anyParams.selection.length === 0 || xSelected.length === 0 || ySelected.length === 0">
+                            Add points to selection
+                        </button></th>
+                    <th>#Points</th>
+                </tr>
+                <tr *ngFor="let ds of dataSeries.series, index as i"
+                    [style.background]="ds.selected ? 'orange' : 'white'" (click)="select(ds)" class="clickable">
+                    <td><input class="table-input table-ctrl" type="text" [value]="ds.name? ds.name : ''"
+                            [(ngModel)]="dataSeries.series[i].name" (click)="select(ds)"> </td>
+                    <td><input class="table-input-color" type="color" value="#ff0000"
+                            [(ngModel)]="dataSeries.series[i].shape.color"> </td>
+                    <td>
+                        <select class="form-select" [(ngModel)]="dataSeries.series[i].shape.shape">
+                            <option *ngFor="let shape of ChartShapes">{{
+                                shape }}</option>
+                        </select>
+                    </td>
+                    <td>{{ dataSeries.series[i].data.length }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal-footer">
+    <div class="row w-100">
+        <div class="col-3 text-left">
+            <input type="checkbox" [(ngModel)]="onMix" [disabled]="!alertMx"> On mixing diagram
+        </div>
+        <div class="col-9 text-right">
+            <button type="button" class="btn btn-secondary mx-1" (click)="close()">Close</button>
+            <button (click)="reset()" class="btn btn-danger mx-1" type="button"
+                [disabled]="xSelected.length === 0 || ySelected.length === 0">
+                Reset all</button>
+            <button type="button" class="btn btn-outline-dark mx-1" (click)="mix()">Mix</button>
+            <button type="button" class="btn btn-primary mx-1" (click)="plot()"
+                [disabled]="dataSeries.series.length <= 0">PLOT!</button>
+        </div>
+    </div>
+    <!-- <button type="button" class="btn btn-secondary" (click)="close()">Close</button>
+    <button (click)="reset()" class="btn btn-danger" type="button"
+        [disabled]="xSelected.length === 0 || ySelected.length === 0">
+        Reset all</button>
+    <button type="button" class="btn btn-primary" (click)="plot()"
+        [disabled]="dataSeries.series.length <= 0">PLOT!</button> -->
+</div>
