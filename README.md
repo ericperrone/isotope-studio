@@ -26,7 +26,7 @@ In addition to these directories, a 'database' folder is also provided, containi
 
 ### Database
 
-- PstgreSQL 17 or higher
+- PostgreSQL 17 or higher
 
 ### Webserver
 
