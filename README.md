@@ -51,7 +51,7 @@ Upon completion, the 'dist/isoapp' sub-folder will contain the frontend code, ap
 
 Copy the .war file (path isotopews/target) and the 'isoapp'  folder (path: isoapp/dist/isoapp) into the Tomcat webapps folder.
 
-Create a new database with PosgtreSQL and import (pg_restore) the provided database dump. 
+Create a new UTF-8 database with PosgtreSQL and import (pg_restore) the provided database dump. 
 
 Create the directory /etc/isotope and copy the conf.properties file (located at database/isotope) into it. Edit conf.properties to properly configure the database access.
 
