@@ -49,7 +49,7 @@ Upon completion, the 'dist/isoapp' sub-folder will contain the frontend code, ap
 
 # Deployment and Configuration Instructions
 
-Copy the .war file and the 'isoapp' (path isotopews/target) folder (path: isoapp/dist/isoapp) into the Tomcat webapps folder.
+Copy the .war file (path isotopews/target) and the 'isoapp'  folder (path: isoapp/dist/isoapp) into the Tomcat webapps folder.
 
 Create a new database with PosgtreSQL and import (pg_restore) the provided database dump. 
 
