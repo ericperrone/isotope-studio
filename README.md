@@ -10,7 +10,7 @@ The source code for 'Isotope Studio' is organized into two distinct components: 
 
 [4] isoapp (frontend)
 
-In addition to these directories, a 'database' folder is also provided, containing the PostgreSQL database dump required by the application.
+In addition to these directories, a 'database' folder is also provided, containing a minimal version of the PostgreSQL database dump required by the application.
 
 # Software Requirements
 
@@ -44,6 +44,22 @@ Finally, the 'target' sub-folder of isotopews will contain the backend WAR file.
 ### Frontend
 
 Navigate into the 'isoapp' folder and run npm install (first-time only), then ng build --base-href="./". 
-Upon completion, the 'dist' sub-folder will contain the frontend code, appropriately minified and obfuscated.
+Upon completion, the 'dist/isoapp' sub-folder will contain the frontend code, appropriately minified and obfuscated.
+
+
+# Deployment and Configuration Instructions
+
+Copy the .war file and the 'isoapp' (path isotopews/target) folder (path: isoapp/dist/isoapp) into the Tomcat webapps folder.
+
+Create a new database with PosgtreSQL and import (pg_restore) the provided database dump. 
+
+Create the directory /etc/isotope and copy the conf.properties file (located at database/isotope) into it. Edit conf.properties to properly configure the database access.
+
+
+If you wish to explore the application without the burden of building the code yourself, you can use a public Docker image, which is freely available on Docker Hub via the following command: docker pull perroneeric/isotopestudio:latest.
+
+Once you have obtained the Docker image, you will still need to install the database (using the dump provided in this repository) and make it available to the application by properly configuring the /etc/isotope/conf.properties file inside the container. For testing and demonstration purposes, you can use the username/password 'admin / admin2026' to import new datasets for research and data processing.
+
+
 
 
