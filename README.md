@@ -23,6 +23,15 @@ The source code for 'Isotope Studio' is organized into two distinct components: 
 
 In addition to these directories, a 'database' folder is also provided, containing a minimal version of the PostgreSQL database dump required by the application.
 
+##  Quick Start (Docker)
+If you wish to explore the application without compiling the burden of building the code yourself, you can use a public Docker image, which is freely available on Docker Hub viaby using the following commands: 
+1. Pull the image: docker pull perroneeric/isotopestudio:latest.
+2. Follow the [Configuration](#deployment-and-configuration-instructions) steps to link your database.
+
+In particular, Oonce you have obtained the Docker image, you will still need to install the database (using the dump provided in this repository) and make it available to the application by properly configuring the /etc/isotope/conf.properties file inside the container. 
+3. For testing and demonstration purposes, login with: **admin / admin2026** to import new datasets for research and data processing. 
+
+
 # Software Requirements
 
 ### Backend
@@ -52,24 +61,34 @@ To build the application after cloning the repository, please follow the instruc
 Each of the three folders making up the backend is equipped with its own pom.xml file. Navigate into each folder and run mvn install. This operation must be performed in the following order: first isotopedb and sheetx, and finally isotopews.
 Finally, the 'target' sub-folder of isotopews will contain the backend WAR file.
 
+See the following code to navigate into each folder and run:
+\```bash
+cd isotopedb && mvn install
+cd ../sheetx && mvn install
+cd ../isotopews && mvn install
+\```
+The artifact will be located in `isotopews/target/isotopews.war`.
+
 ### Frontend
 
 Navigate into the 'isoapp' folder and run npm install (first-time only), then ng build --base-href="./". 
 Upon completion, the 'dist/isoapp' sub-folder will contain the frontend code, appropriately minified and obfuscated.
 
+\```bash
+cd isoapp
+npm install
+ng build --base-href="./"
+\```
 
 # Deployment and Configuration Instructions
 
 Copy the .war file (path isotopews/target) and the 'isoapp'  folder (path: isoapp/dist/isoapp) into the Tomcat webapps folder.
 
-Create a new UTF-8 database with PosgtreSQL and import (pg_restore) the provided database dump. 
+Create a new UTF-8 database with PosgtreSQL and import (pg_restore) the provided database dump:
+pg_restore -d your_db_name database/minimal_dump.sql. 
 
 Create the directory /etc/isotope and copy the conf.properties file (located at database/isotope) into it. Edit conf.properties to properly configure the database access.
 
-
-If you wish to explore the application without the burden of building the code yourself, you can use a public Docker image, which is freely available on Docker Hub via the following command: docker pull perroneeric/isotopestudio:latest.
-
-Once you have obtained the Docker image, you will still need to install the database (using the dump provided in this repository) and make it available to the application by properly configuring the /etc/isotope/conf.properties file inside the container. For testing and demonstration purposes, you can use the username/password 'admin / admin2026' to import new datasets for research and data processing.
 
 
 
