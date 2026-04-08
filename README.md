@@ -10,16 +10,16 @@ Code DOI: not yet available. DOI will be assigned upon acceptance
 ![Java](https://img.shields.io/badge/Java-11-blue) ![Angular](https://img.shields.io/badge/Angular-14-red) ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-17+-blue) ![Docker](https://img.shields.io/badge/Docker-Available-green)
 
 # General Information and Repository Structure
-
+Isotope Studio is a web-based application developed to be integrated into the ITINERIS Isotope Virtual Research Environment (ISOTOPE VRE) to gather geochemical and isotopic data, and to provide tools for data analysis and interpretation.
 The source code for 'Isotope Studio' is organized into two distinct components: the backend (built with Java) and the application frontend (built with Angular). The source code is structured into the following directories:
 
-[1] isotopedb (backend: database management)
+| Directory | Component | Description |
+| :--- | :--- | :--- |
+| `isotopedb` | Backend | Database management |
+| `sheetx` | Backend | Toolset for e-sheet management |
+| `isotopews` | Backend | REST API services |
+| `isoapp` | Frontend | Angular application |
 
-[2] sheetx  (backend: toolset for management of e-sheets) 
-
-[3] isotopews (backend: REST API)
-
-[4] isoapp (frontend)
 
 In addition to these directories, a 'database' folder is also provided, containing a minimal version of the PostgreSQL database dump required by the application.
 
