@@ -1,10 +1,11 @@
 # ISOTOPE STUDIO
-Code for the manuscript: "ISOTOPE STUDIO: Advanced Modelling and Management of Environmental Isotope Data in Open Science Ecosystems (ITINERIS project)" submitted to Computers and Geosciences.
+Code for the manuscript: "ISOTOPE STUDIO: Advanced Modelling and Management of Environmental Isotope Data in Open Science Ecosystems (ITINERIS project)" 
+submitted to Computers and Geosciences.
 
 ### Manuscript information
 Title: ISOTOPE STUDIO: Advanced Modelling and Management of Environmental Isotope Data in Open Science Ecosystems (ITINERIS project) 
-Authors: Di Giuseppe, P., Gennaro, S., Perrone, E., Procaccini, M., Agostini, S., Provenzale, A., Trumpy, E.
-Status: Submitted to Computers and Geosciences
+Authors: Di Giuseppe, P., Gennaro, S., Perrone, E., Procaccini, M., Agostini, S., Provenzale, A., Trumpy, E. 
+Status: Submitted to Computers and Geosciences 
 Code DOI: not yet available. DOI will be assigned upon acceptance
 
 ![Java](https://img.shields.io/badge/Java-11-blue) ![Angular](https://img.shields.io/badge/Angular-14-red) ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-17+-blue) ![Docker](https://img.shields.io/badge/Docker-Available-green)
